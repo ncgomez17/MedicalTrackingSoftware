@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% block content %}
+<p class="text-center mt-6 mb-12 mx-64 h-auto md:w-auto">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus porta semper. Aenean convallis ultrices
+    malesuada. In hac habitasse platea dictumst. Fusce egestas vel risus tincidunt tempus. Proin dignissim neque eget
+    velit malesuada semper. Suspendisse lacinia luctus dui eu blandit. In ac massa sem. Maecenas suscipit justo ex, nec
+    semper tellus rhoncus quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam bibendum eros at
+    commodo vestibulum. In consequat varius viverra.</p>
+
+<div class="text-2xl font-extrabold text-center mt-6 mb-36 h-auto md:w-auto ">
+  <span class="bg-clip-text text-transparent bg-gradient-to-r from-black to-green-800">
+      {% if nick %}
+     Listado de elementos del usuario {{ nick }}
+      {% else %}
+      Para poder tener acceso a las funciones necesita logearse
+      {% endif %}
+  </span>
+</div>
+{% endblock %}
