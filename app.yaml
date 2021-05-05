@@ -17,9 +17,6 @@ handlers:
 - url: /JS
   static_dir: JS
 
-- url: /build
-  static_dir: public/build
-
 - url: /assets
   static_dir: assets
   

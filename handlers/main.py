@@ -38,7 +38,7 @@ class MainHandler(webapp2.RequestHandler):
             "nick": nick
         }
 
-        self.response.write(self.jinja.render_template("main.html", **sust))
+        self.response.write(self.jinja.render_template("formularioRegistro.html", **sust))
 
 
 
