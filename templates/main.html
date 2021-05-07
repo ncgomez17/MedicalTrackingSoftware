@@ -1,11 +1,9 @@
 {% extends "index.html" %}
 {% block content %}
 <p class="text-center mt-6 mb-12 mx-64 h-auto md:w-auto">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus porta semper. Aenean convallis ultrices
-    malesuada. In hac habitasse platea dictumst. Fusce egestas vel risus tincidunt tempus. Proin dignissim neque eget
-    velit malesuada semper. Suspendisse lacinia luctus dui eu blandit. In ac massa sem. Maecenas suscipit justo ex, nec
-    semper tellus rhoncus quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam bibendum eros at
-    commodo vestibulum. In consequat varius viverra.</p>
+    Esta aplicación permitirá guardar los registros médicos de distintos pacientes,así como crear recetas de medicamentos
+    y además se podrán crear diagnósticos de las pacientes.Por último todos los usuarios pueden ver el listado de farmacias
+    cercanas</p>
 
 <div class="text-2xl font-extrabold text-center mt-6 mb-36 h-auto md:w-auto ">
   <span class="bg-clip-text text-transparent bg-gradient-to-r from-black to-green-800">
@@ -13,6 +11,15 @@
      Listado de elementos del usuario {{ nick }}
       {% else %}
       Para poder tener acceso a las funciones necesita logearse
+            <div class="container mt-8">
+                <a href="{{ login_out_url }}"
+                   class="inline-block text-sm px-4 py-2 leading-none border rounded border-black text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white  lg:mt-0">
+                    {% if usr %}} Logout {{usr.nickname()}}
+                    {% else %}
+                    Login
+                    {% endif %}
+                   </a>
+            </div>
       {% endif %}
   </span>
 </div>

@@ -10,11 +10,11 @@
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
             <div class="-mx-3 md:flex mb-6">
                 <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="company">
+                    <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="nss">
                         Número Seguridad Social
                     </label>
                     <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
-                           id="company" type="number" required placeholder="">
+                           id="nss" type="text" pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}$" required placeholder="">
                     <div>
               <span class="text-red-500 text-xs italic hidden">
                 Please fill out this field.
@@ -42,8 +42,9 @@
                         Fecha de vencimiento
                     </label>
                     <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
-                           id="fechavencimiento" type="date" required placeholder="">
+                           id="fechavencimiento" type="date" required placeholder="fecha">
                 </div>
+
             </div>
             <div class="-mx-3 md:flex mt-2">
                 <div class="md:w-full text-center px-3">
