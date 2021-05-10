@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Proyecto</title>
+    <title>Medical tracking software</title>
     <link rel="shortcut icon" href="/assets/icons/MedicarTrackingSoftware.ico">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="index.js"></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <script src="JS/index.js"></script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.19/"></script>
 </head>
 <header>
     <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -35,27 +35,27 @@
         <div id="menu" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden">
             {% if nick %}
             <div class="text-sm space-x-4 lg:flex-grow">
-                <a href="#/ListarFarmacias"
+                <a href="/EncontrarHospitales"
                    class=" text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif ">
-                    Listar farmacias cercanas
+                    Encontrar hospitales o clínicas cercanas
                 </a>
-                <a href="#/CrearRegistro"
+                <a href="/ListarRegistros"
                    class=" text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif ">
-                    Crear un registro médico
+                    Lista de registros médicos
                 </a>
                 <a href="#/ListarMedicamentos"
                    class="  text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif ">
                     Lista de medicamentos recetados
                 </a>
                 <a href="#/RegistroEnfermedadesySintomas" class="text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif">
-                    Registro de enfermedades y síntomas
+                    Lista de diagnósticos
                 </a>
             </div>
             {% else %}
             {% endif %}
             <div>
                 <a href="{{ login_out_url }}" class="inline-block text-sm px-4 py-2 leading-none border rounded border-black text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white  mt-4 lg:mt-0">
-                    {% if usr %}} Logout {{usr.nickname()}}
+                    {% if nick %} Logout
                     {% else %}
                     Login
                     {% endif %}

@@ -2,16 +2,34 @@
 {% block content %}
 <p class="text-center mt-6 mb-12 mx-64 h-auto md:w-auto">
     Esta aplicación permitirá guardar los registros médicos de distintos pacientes,así como crear recetas de medicamentos
-    y además se podrán crear diagnósticos de las pacientes.Por último todos los usuarios pueden ver el listado de farmacias
-    cercanas</p>
+    y además se podrán crear diagnósticos de los pacientes.Por último los usuarios podrán ver las clínicas y hospitales cercanos mediante un mapa que permitirá hacer
+    búsquedas por campo</p>
 
 <div class="text-2xl font-extrabold text-center mt-6 mb-36 h-auto md:w-auto ">
   <span class="bg-clip-text text-transparent bg-gradient-to-r from-black to-green-800">
       {% if nick %}
-     Listado de elementos del usuario {{ nick }}
+     Listado de funcionalidades del usuario {{ nick }}
+                    <div id="menu" class="w-full block mt-8 flex-grow lg:flex lg:items-center lg:w-auto hidden">
+            <div class="text-sm space-x-4 lg:flex-grow">
+                <a href="/EncontrarHospitales"
+                   class=" text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif ">
+                    Encontrar hospitales o clínicas cercanas
+                </a>
+                <a href="/ListarRegistros"
+                   class=" text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif ">
+                    Lista de registros médicos
+                </a>
+                <a href="#/ListarMedicamentos"
+                   class="  text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif ">
+                    Lista de medicamentos recetados
+                </a>
+                <a href="#/RegistroEnfermedadesySintomas" class="text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif">
+                    Lista de diagnósticos
+                </a>
+            </div>
       {% else %}
       Para poder tener acceso a las funciones necesita logearse
-            <div class="container mt-8">
+            <div class=" mt-8  ">
                 <a href="{{ login_out_url }}"
                    class="inline-block text-sm px-4 py-2 leading-none border rounded border-black text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white  lg:mt-0">
                     {% if usr %}} Logout {{usr.nickname()}}

@@ -18,31 +18,27 @@
 import webapp2
 from webapp2_extras import jinja2
 from webapp2_extras.users import users
+from Model.RegistroMedico import RegistroMedico
+from Utils.Login import comprobarLogin
 
 
-class MainHandler(webapp2.RequestHandler):
+class RegistrosMedicos(webapp2.RequestHandler):
     def __init__(self, request, response):
         self.initialize(request, response)
         self.jinja = jinja2.get_jinja2(app=self.app)
 
     def get(self):
-        usr = users.get_current_user()
-        nick = None
-        if usr:
-            login_out_url = users.create_logout_url("/")
-            nick = usr.nickname()
-        else:
-            login_out_url = users.create_login_url("/")
+        login, nick = comprobarLogin()
+        registros = RegistroMedico.query()
         sust = {
-            "login_out_url": login_out_url,
-            "nick": nick
+            "login_out_url": login,
+            "nick": nick,
+            "registros": registros
         }
 
-        self.response.write(self.jinja.render_template("main.html", **sust))
-
-
+        self.response.write(self.jinja.render_template("gestionRegistros.html", **sust))
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/ListarRegistros', RegistrosMedicos)
 ], debug=True)

@@ -1,7 +1,4 @@
 # Clase modelo de Diagnosticos
-"""Campos
------>Tipo de diagnostico:enfermedad o síntoma
------>Observaciones"""
 
 from google.appengine.ext import ndb
 

@@ -19,10 +19,15 @@ handlers:
 
 - url: /assets
   static_dir: assets
-  
-- url: .*
+
+- url: /
   script: handlers.main.app
 
+- url: /EncontrarHospitales
+  script: handlers.EncontrarHospitales.app
+
+- url: /ListarRegistros
+  script: handlers.RegistrosMedicos.app
 
 
 libraries:
@@ -30,7 +35,4 @@ libraries:
   version: "2.5.2"
 
 - name: jinja2
-  version: "latest"
-
-- name: arcgis
   version: "latest"

@@ -1,0 +1,77 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container m-auto">
+    <a href="/AnhadirRegistro"
+       class=" text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif ">
+        Añadir registro médico
+    </a>
+</div>
+{% if registros.count() > 0 %}
+<div class="flex items-center justify-center">
+    <div class="container">
+        <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+            <thead class="text-white bg-green-400">
+            <tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                <th class="p-3 text-left">NSS</th>
+                <th class="p-3 text-left">Paciente</th>
+                <th class="p-3 text-left">Domicilio</th>
+                <th class="p-3 text-left">Teléfono</th>
+                <th class="p-3 text-left">Nombre Médico</th>
+                <th class="p-3 text-left">Especialidad</th>
+                <th class="p-3 text-left">Observaciones</th>
+                <th class="p-3 text-left">Fecha</th>
+                <th class="p-3 text-left" width="80px">Borrar</th>
+                <th class="p-3 text-left" width="80px">Editar</th>
+            </tr>
+
+            </thead>
+            <tbody class="flex-1 sm:flex-none">
+            {% for registro in registros %}
+            <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                <td class="border-grey-light border hover:bg-gray-100 p-3">{{ registro.nss }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.nombre_paciente }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.domicilio }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.telefono }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.nombre_medico }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.especialidad }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.observaciones }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.fecha }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                    <img class="img-fluid" src="../assets/png/borrar.png"/>
+                </td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                    <img class="img-fluid" src="../assets/png/editar.png"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        {% endfor %} {% else %}
+        <p class="text-center mt-6 mb-12 mx-64 h-auto md:w-auto">No existen registros todavía,añade uno</p>
+        {% endif %}
+    </div>
+</div>
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    @media (min-width: 640px) {
+        table {
+            display: inline-table !important;
+        }
+
+        thead tr:not(:first-child) {
+            display: none;
+        }
+    }
+
+    td:not(:last-child) {
+        border-bottom: 0;
+    }
+
+    th:not(:last-child) {
+        border-bottom: 2px solid rgba(0, 0, 0, .1);
+    }
+</style>
+{% endblock %}

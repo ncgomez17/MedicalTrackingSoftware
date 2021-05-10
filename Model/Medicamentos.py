@@ -1,10 +1,4 @@
 # Clase modelo de Medicamentos
-"""Campos
------>Numero seguridad Social paciente
------>Nombre y apellidos paciente(opcional)
------>Medicamento
------>Fecha de vencimiento
-"""
 from google.appengine.ext import ndb
 
 
