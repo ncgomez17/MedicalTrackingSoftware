@@ -17,12 +17,11 @@
 
 import webapp2
 from webapp2_extras import jinja2
-from webapp2_extras.users import users
 from Model.RegistroMedico import RegistroMedico
 from Utils.Login import comprobarLogin
 
 
-class RegistrosMedicos(webapp2.RequestHandler):
+class AnhadirRegistro(webapp2.RequestHandler):
     def __init__(self, request, response):
         self.initialize(request, response)
         self.jinja = jinja2.get_jinja2(app=self.app)
@@ -36,9 +35,9 @@ class RegistrosMedicos(webapp2.RequestHandler):
             "registros": registros
         }
 
-        self.response.write(self.jinja.render_template("gestionRegistros.html", **sust))
+        self.response.write(self.jinja.render_template("formularioMedicamentos.html", **sust))
 
 
 app = webapp2.WSGIApplication([
-    ('/ListarRegistros', RegistrosMedicos)
+    ('/ListarRegistros/AnhadirRegistro', AnhadirRegistro)
 ], debug=True)
