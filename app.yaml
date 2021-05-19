@@ -24,14 +24,52 @@ handlers:
   script: handlers.main.app
 
 - url: /EncontrarHospitales
-  script: handlers.EncontrarHospitales.app
+  script: handlers.encontrarHospitales.app
 
 - url: /ListarRegistros
-  script: handlers.Registros.RegistrosMedicos.app
+  script: handlers.Registros.registrosMedicos.app
 
 - url: /ListarRegistros/AnhadirRegistro
-  script: handlers.Registros.AnhadirRegistro.app
+  script: handlers.Registros.anhadirRegistro.app
 
+- url: /ListarRegistros/BorrarRegistro
+  script: handlers.Registros.borrarRegistro.app
+
+- url: /ListarRegistros/EditarRegistro
+  script: handlers.Registros.editarRegistro.app
+
+- url: /ListarRegistros/BuscarRegistro
+  script: handlers.Registros.buscarRegistro.app
+
+- url: /ListarMedicamentos
+  script: handlers.Medicamentos.gestionMedicamentos.app
+
+- url: /ListarMedicamentos/AnhadirMedicamento
+  script: handlers.Medicamentos.anhadirMedicamento.app
+
+- url: /ListarMedicamentos/BorrarMedicamento
+  script: handlers.Medicamentos.borrarMedicamento.app
+
+- url: /ListarMedicamentos/EditarMedicamento
+  script: handlers.Medicamentos.editarMedicamento.app
+
+- url: /ListarMedicamentos/BuscarMedicamento
+  script: handlers.Medicamentos.buscarMedicamento.app
+
+- url: /ListarDiagnosticos
+  script: handlers.Diagnosticos.gestionDiagnosticos.app
+
+- url: /ListarDiagnosticos/AnhadirDiagnostico
+  script: handlers.Diagnosticos.anhadirDiagnostico.app
+
+- url: /ListarDiagnosticos/BorrarDiagnostico
+  script: handlers.Diagnosticos.borrarDiagnostico.app
+
+- url: /ListarDiagnosticos/EditarDiagnostico
+  script: handlers.Diagnosticos.editarDiagnostico.app
+
+- url: /ListarDiagnosticos/BuscarDiagnostico
+  script: handlers.Diagnosticos.buscarDiagnostico.app
 
 libraries:
 - name: webapp2

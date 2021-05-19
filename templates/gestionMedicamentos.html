@@ -1,18 +1,18 @@
 {% extends "index.html" %}
 {% block content %}
 <div class="container m-auto">
-    <a href="/ListarRegistros/AnhadirRegistro"
+    <a href="/ListarMedicamentos/AnhadirMedicamento"
        class=" text-gray-300 bg-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-serif ">
-        Añadir registro médico
+        Añadir medicamento
     </a>
-<form class="my-8 mr-8" id="buscar_registro" action="/ListarRegistros/BuscarRegistro" method="post">
-    <label for="campo_registro">Buscar por nombre del paciente o número de la seguridad social: </label>
-    <input type="text" required id="campo_registro" name="campo_registro"/>
+<form class="my-8 mr-8" id="buscar_medicamento" action="/ListarMedicamentos/BuscarMedicamento" method="post">
+    <label for="campo_medicamento">Buscar por medicamento o número de la seguridad social: </label>
+    <input type="text" required id="campo_medicamento" name="campo_medicamento"/>
       <button  type="submit"
       ><img class="img-fluid" src="../assets/png/buscar.png"/></button>
 </form>
 </div>
-{% if registros.count() > 0 %}
+{% if medicamentos.count() > 0 %}
 <div class="flex items-center justify-center">
     <div class="container">
         <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
@@ -20,35 +20,29 @@
             <tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                 <th class="p-3 text-left">NSS</th>
                 <th class="p-3 text-left">Paciente</th>
-                <th class="p-3 text-left">Domicilio</th>
-                <th class="p-3 text-left">Teléfono</th>
-                <th class="p-3 text-left">Nombre Médico</th>
-                <th class="p-3 text-left">Especialidad</th>
-                <th class="p-3 text-left">Observaciones</th>
-                <th class="p-3 text-left">Fecha</th>
+                <th class="p-3 text-left">Medicamento</th>
+                <th class="p-3 text-left">Fecha vencimiento</th>
+                <th class="p-3 text-left">Fecha de la receta</th>
                 <th class="p-3 text-left" width="80px">Borrar</th>
                 <th class="p-3 text-left" width="80px">Editar</th>
             </tr>
 
             </thead>
             <tbody class="flex-1 sm:flex-none">
-            {% for registro in registros %}
+            {% for medicamento in medicamentos %}
             <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                <td class="border-grey-light border hover:bg-gray-100 p-3">{{ registro.nss }}</td>
-                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.nombre_paciente }}</td>
-                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.domicilio }}</td>
-                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.telefono }}</td>
-                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.nombre_medico }}</td>
-                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.especialidad }}</td>
-                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.observaciones }}</td>
-                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ registro.fecha }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3">{{ medicamento.nss }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ medicamento.nombre_paciente }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ medicamento.medicamento }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ medicamento.fecha_vencimiento }}</td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{ medicamento.fecha }}</td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                    <a href="/ListarRegistros/BorrarRegistro?key={{ registro.key.urlsafe() }}">
+                    <a href="/ListarMedicamentos/BorrarMedicamento?key={{ medicamento.key.urlsafe() }}">
                     <img class="img-fluid" src="../assets/png/borrar.png"/>
                     </a>
                 </td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
-                    <a href="/ListarRegistros/EditarRegistro?key={{ registro.key.urlsafe() }}">
+                    <a href="/ListarMedicamentos/EditarMedicamento?key={{ medicamento.key.urlsafe() }}">
                     <img class="img-fluid" src="../assets/png/editar.png"/>
                     </a>
                 </td>
@@ -58,8 +52,8 @@
         </table>
  {% else %}
         <div class="bg-blue-100 w-1/2  border-t border-b border-blue-500 text-blue-700 px-4 py-3 m-auto " role="alert">
-            <p class="font-bold">No existen registros</p>
-            <p class="text-sm">No existen registros o la búsqueda no coincide con ningún registro.</p>
+            <p class="font-bold">No existen medicamentos recetados</p>
+            <p class="text-sm">No existen medicamentos o la búsqueda no coincide con ningún medicamento.</p>
         </div>
         {% endif %}
     </div>

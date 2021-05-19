@@ -17,27 +17,29 @@
 
 import webapp2
 from webapp2_extras import jinja2
-from Model.RegistroMedico import RegistroMedico
-from Utils.Login import comprobarLogin
+from Model.medicamentos import Medicamentos
+from Utils.login import comprobarLogin
 
 
-class AnhadirRegistro(webapp2.RequestHandler):
+class GestionMedicamentos(webapp2.RequestHandler):
     def __init__(self, request, response):
         self.initialize(request, response)
         self.jinja = jinja2.get_jinja2(app=self.app)
 
     def get(self):
         login, nick = comprobarLogin()
-        registros = RegistroMedico.query()
-        sust = {
-            "login_out_url": login,
-            "nick": nick,
-            "registros": registros
-        }
-
-        self.response.write(self.jinja.render_template("formularioMedicamentos.html", **sust))
+        medicamentos = Medicamentos.query(Medicamentos.usuario == nick).order(-Medicamentos.fecha_vencimiento)
+        if nick:
+            sust = {
+                "login_out_url": login,
+                "nick": nick,
+                "medicamentos": medicamentos
+            }
+            self.response.write(self.jinja.render_template("gestionMedicamentos.html", **sust))
+        else:
+            self.redirect("/")
 
 
 app = webapp2.WSGIApplication([
-    ('/ListarRegistros/AnhadirRegistro', AnhadirRegistro)
+    ('/ListarMedicamentos', GestionMedicamentos)
 ], debug=True)

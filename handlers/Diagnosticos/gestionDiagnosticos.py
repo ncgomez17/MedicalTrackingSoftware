@@ -17,27 +17,29 @@
 
 import webapp2
 from webapp2_extras import jinja2
-from Model.RegistroMedico import RegistroMedico
-from Utils.Login import comprobarLogin
+from Model.diagnostico import Diagnostico
+from Utils.login import comprobarLogin
 
 
-class RegistrosMedicos(webapp2.RequestHandler):
+class GestionDiagnosticos(webapp2.RequestHandler):
     def __init__(self, request, response):
         self.initialize(request, response)
         self.jinja = jinja2.get_jinja2(app=self.app)
 
     def get(self):
         login, nick = comprobarLogin()
-        registros = RegistroMedico.query()
-        sust = {
-            "login_out_url": login,
-            "nick": nick,
-            "registros": registros
-        }
-
-        self.response.write(self.jinja.render_template("gestionRegistros.html", **sust))
+        diagnosticos = Diagnostico.query(Diagnostico.usuario == nick).order(-Diagnostico.fecha)
+        if nick:
+            sust = {
+                "login_out_url": login,
+                "nick": nick,
+                "diagnosticos": diagnosticos
+            }
+            self.response.write(self.jinja.render_template("gestionDiagnosticos.html", **sust))
+        else:
+            self.redirect("/")
 
 
 app = webapp2.WSGIApplication([
-    ('/ListarRegistros', RegistrosMedicos)
+    ('/ListarDiagnosticos', GestionDiagnosticos)
 ], debug=True)
