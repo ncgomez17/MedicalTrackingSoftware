@@ -16,19 +16,26 @@ class BuscarDiagnostico(webapp2.RequestHandler):
         self.jinja = jinja2.get_jinja2(app=self.app)
 
     def post(self):
-        campo_diagnostico = self.request.get("campo_diagnostico", "ERROR")
         login, nick = comprobarLogin()
+        self.diagnosticos = []
+        self.key_text = self.request.get("campo_diagnostico", "ERROR").lower()
         if nick:
-            diagnosticos = Diagnostico.query(ndb.OR(Diagnostico.nss == campo_diagnostico,
-                                                    Diagnostico.tipo_diagnostico == campo_diagnostico))
+            Diagnostico.query(Diagnostico.usuario == nick).order(-Diagnostico.fecha).map(callback=self.lookFor)
             sust = {
                 "login_out_url": login,
                 "nick": nick,
-                "diagnosticos": diagnosticos
+                "diagnosticos": self.diagnosticos
             }
             self.response.write(self.jinja.render_template("gestionDiagnosticos.html", **sust))
         else:
             self.redirect("/")
+
+    @ndb.tasklet
+    def lookFor(self, diagnostico):
+        nss = diagnostico.nss.lower()
+        tipo = diagnostico.tipo_diagnostico.lower()
+        if (self.key_text in tipo) or (self.key_text in nss):
+            self.diagnosticos += [diagnostico]
 
 
 app = webapp2.WSGIApplication([

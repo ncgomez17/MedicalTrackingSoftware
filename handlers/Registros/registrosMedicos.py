@@ -33,7 +33,7 @@ class RegistrosMedicos(webapp2.RequestHandler):
             sust = {
                 "login_out_url": login,
                 "nick": nick,
-                "registros": registros
+                "registros": list(registros)
             }
             self.response.write(self.jinja.render_template("gestionRegistros.html", **sust))
         else:

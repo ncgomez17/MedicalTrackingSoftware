@@ -33,7 +33,7 @@ class GestionMedicamentos(webapp2.RequestHandler):
             sust = {
                 "login_out_url": login,
                 "nick": nick,
-                "medicamentos": medicamentos
+                "medicamentos": list(medicamentos)
             }
             self.response.write(self.jinja.render_template("gestionMedicamentos.html", **sust))
         else:

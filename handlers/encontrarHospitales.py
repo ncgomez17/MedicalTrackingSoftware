@@ -17,7 +17,6 @@
 
 import webapp2
 from webapp2_extras import jinja2
-from webapp2_extras.users import users
 
 from Utils.login import comprobarLogin
 

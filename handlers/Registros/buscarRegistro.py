@@ -15,20 +15,27 @@ class BuscarRegistro(webapp2.RequestHandler):
         self.jinja = jinja2.get_jinja2(app=self.app)
 
     def post(self):
-        campo_registro = self.request.get("campo_registro", "ERROR")
         login, nick = comprobarLogin()
+        self.registros = []
+        self.key_text = self.request.get("campo_registro", "ERROR").lower()
         if nick:
-            registros = RegistroMedico.query(ndb.OR(RegistroMedico.nss == campo_registro,
-                                                    RegistroMedico.nombre_paciente == campo_registro))
+            RegistroMedico.query(RegistroMedico.usuario == nick).order(-RegistroMedico.fecha).map(
+                callback=self.lookFor)
             sust = {
                 "login_out_url": login,
                 "nick": nick,
-                "registros": registros
+                "registros": self.registros
             }
             self.response.write(self.jinja.render_template("gestionRegistros.html", **sust))
         else:
             self.redirect("/")
 
+    @ndb.tasklet
+    def lookFor(self, registro):
+        nss = registro.nss.lower()
+        paciente= registro.nombre_paciente.lower()
+        if (self.key_text in paciente) or (self.key_text in nss):
+            self.registros += [registro]
 
 app = webapp2.WSGIApplication([
     ('/ListarRegistros/BuscarRegistro', BuscarRegistro)
