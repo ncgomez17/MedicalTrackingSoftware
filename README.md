@@ -1,6 +1,6 @@
 # MedicalTrackingSoftware
 Proyecto ALS: Medical Tracking Software
-Nicolás Cid Gómez    DNI:44494151F
+Nicolás Cid Gómez    
 
 Esta aplicación está dirigida a las personas que trabajan en el ámbito médico y tienen una consulta.Les permitirá gestionar registros médicos, medicamentos y diagnósticos de los pacientes que tenga cada usuario.A mayores, proporciona el servicio de localización de hospitales, clínicas y farmacias cercanas para poder recomendar a los pacientes lugares donde poder pillar medicamentos o realizar los tratamientos.
 En cuento a la gestión de registros,medicamentos y diagnósticos, los usuarios podrán añadir,editar,borrar,buscar y visualizar estos.
@@ -8,18 +8,18 @@ En cuento a la gestión de registros,medicamentos y diagnósticos, los usuarios 
 Descripción técnica:
 
 En cuanto a las tecnologías usadas en este proyecto están:
-•	Python 2.7
-•	GAE(Google Aplication Engine)
-•	Javascript
-•	Tailwind CSS
+1.	Python 2.7
+2.	GAE(Google Aplication Engine)
+3.	Javascript
+4.	Tailwind CSS
 En cuanto a la distribución del proyecto, este se ha dividido en varias carpetas para poder diferenciar cada una asignándole unas determinadas responsabilidades:
-•	assets:En esta carpeta se encontrarán otras carpetas que guardarán imágenes de distintos tipos, así como iconos,imágenes vectoriales,etc …
-•	CSS:Se guardarán los ficheros con las propiedades CSS
-•	handlers: Esta carpeta esta divida en otras 3 carpetas que pertenecen a las distintas entidades del proyecto.En esta carpeta se crearán los distintos archivos que nos permitirán manejar las peticiones que se hagan en las distintas rutas que tenemos declaradas.
-•	JS:Se guardarán todos lo archivos javascript del  proyecto.
-•	Model:Se guarda la especificación de los atributos de cada entidad.
-•	templates:Aquí se encuentran las distintas plantillas HTML5.
-•	Utils:En esta se crean archivos auxiliares que permitirán propocionar nuevas funcionalidades a otras carpetas como la de handlers.
+5.	assets:En esta carpeta se encontrarán otras carpetas que guardarán imágenes de distintos tipos, así como iconos,imágenes vectoriales,etc …
+6.	CSS:Se guardarán los ficheros con las propiedades CSS
+7.	handlers: Esta carpeta esta divida en otras 3 carpetas que pertenecen a las distintas entidades del proyecto.En esta carpeta se crearán los distintos archivos que nos permitirán manejar las peticiones que se hagan en las distintas rutas que tenemos declaradas.
+8.	JS:Se guardarán todos lo archivos javascript del  proyecto.
+9.	Model:Se guarda la especificación de los atributos de cada entidad.
+10.	templates:Aquí se encuentran las distintas plantillas HTML5.
+11.	Utils:En esta se crean archivos auxiliares que permitirán propocionar nuevas funcionalidades a otras carpetas como la de handlers.
 En el directorio raíz se encuentra el archivo app.yaml en el que se guardarán las distintas configuraciones del proyecto,indicando las dependencias de librerías,carpetas que contiene este y rutas especificadas.
 
 Funcionalidades:
